@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.example.hoxi"
+>
+    <!-- 카카오맵 권한 허용 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
+            android:usesCleartextTraffic="true"
             android:allowBackup="true"
             android:dataExtractionRules="@xml/data_extraction_rules"
             android:fullBackupContent="@xml/backup_rules"
@@ -12,6 +19,7 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.Hoxi"
             tools:targetApi="31">
+        <meta-data android:name="com.kakao.sdk.AppKey" android:value="bdfced61c32956203c046688e506b54e"/>
         <activity
                 android:name=".MainActivity"
                 android:exported="true">
