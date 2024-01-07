@@ -2,9 +2,11 @@ package com.example.hoxi
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.os.Bundle
+import android.service.autofill.FieldClassification.Match
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -47,8 +49,10 @@ class MainActivity : AppCompatActivity() {
         mapViewContainer.addView(mapView)
 
         srcMarker = MapPOIItem()
-        srcMarker.itemName = "source Location"
+        srcMarker.itemName = "출발 위치"
         srcMarker.tag = 0
+        srcMarker.markerType = MapPOIItem.MarkerType.CustomImage
+        srcMarker.customImageResourceId = R.drawable.pin
 
         if (location != null) {
             val latitude = location.latitude
@@ -134,7 +138,6 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-
     }
 
     fun updateAddressUsingCoordinate(marker: MapPOIItem) {
