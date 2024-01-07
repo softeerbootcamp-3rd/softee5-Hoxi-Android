@@ -18,7 +18,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="57dp"
-            android:layout_marginStart="9dp"
+            android:layout_marginStart="12dp"
     />
 
     <TextView
@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/backButton"
             android:layout_marginTop="57dp"
-            android:layout_marginLeft="97dp"
+            android:layout_marginStart="106dp"
             android:layout_width="93dp"
             android:layout_height="30dp"
             android:text="요청글 작성"
@@ -42,7 +42,7 @@
             app:layout_constraintStart_toEndOf="@id/title"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="57dp"
-            android:layout_marginLeft="93dp"
+            android:layout_marginStart="103dp"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentLeft="true"
@@ -69,8 +69,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="19dp"
-                    android:layout_marginLeft="18dp"
-                    android:layout_width="150dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_width="159dp"
                     android:layout_height="50dp"
                     android:background="@drawable/src_input_box"/>
 
@@ -115,7 +115,7 @@
                     app:layout_constraintStart_toEndOf="@id/arrow_right_fill"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="19dp"
-                    android:layout_width="150dp"
+                    android:layout_width="159dp"
                     android:layout_height="50dp"
                     android:background="@drawable/src_input_box"/>
 
@@ -233,12 +233,12 @@
 
             <TextView
                     android:id="@+id/desired_arrival_time_title"
-                    app:layout_constraintTop_toBottomOf="@id/user_phone_number_box"
+                    app:layout_constraintTop_toBottomOf="@id/accommodation_contact_box"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_width="110dp"
                     android:layout_height="24dp"
                     android:layout_marginLeft="22dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="40dp"
                     android:text="희망 도착 시간"
                     android:fontFamily="@font/pretendard_regular"
                     android:textSize="15.8dp"
@@ -500,7 +500,7 @@
 
             <TextView
                     android:id="@+id/accommodation_contact_title"
-                    app:layout_constraintTop_toBottomOf="@id/luggage_count_box"
+                    app:layout_constraintTop_toBottomOf="@id/user_phone_number_box"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -544,12 +544,12 @@
 
             <TextView
                     android:id="@+id/additional_requests_title"
-                    app:layout_constraintTop_toBottomOf="@id/accommodation_contact_box"
+                    app:layout_constraintTop_toBottomOf="@id/luggage_count_box"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="22dp"
-                    android:layout_marginTop="35dp"
+                    android:layout_marginTop="40dp"
                     android:text="추가 요청사항(선택)"
                     android:fontFamily="@font/pretendard_regular"
                     android:textSize="16dp"
