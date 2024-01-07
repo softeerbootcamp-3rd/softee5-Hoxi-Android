@@ -1,4 +1,0 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#D9D9D9"/> <!-- 사각형의 색상을 설정합니다 -->
-    <corners android:radius="16dp"/> <!-- 사각형의 모서리를 둥글게 만들어줍니다 -->
-</shape>

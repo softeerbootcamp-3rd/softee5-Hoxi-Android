@@ -44,4 +44,7 @@ dependencies {
 
     // 카카오맵
     implementation(files("libs/libDaumMapAndroid.jar"))
+
+    // 슬라이딩 업 패널
+    implementation("com.sothree.slidinguppanel:library:3.4.0")
 }

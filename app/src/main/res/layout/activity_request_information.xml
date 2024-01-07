@@ -643,7 +643,7 @@
             android:layout_height="60dp"
             android:layout_marginTop="22dp"
             android:layout_marginStart="20dp"
-            android:background="@drawable/rouned_16_rectangle"
+            android:background="@drawable/rounded_16_rectangle"
             android:elevation="12dp"
             android:outlineProvider="none"
     />
