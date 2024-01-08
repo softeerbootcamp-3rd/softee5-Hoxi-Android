@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".CameraActivity"
+                android:background="@color/dark_mode_background">
+
+    <ImageButton
+            android:id="@+id/backward"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="47dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/backward_white"
+    />
+
+    <TextView
+            android:id="@+id/title"
+            app:layout_constraintTop_toTopOf="@id/backward"
+            app:layout_constraintStart_toEndOf="@id/backward"
+            android:layout_marginStart="106dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="사진 업로드"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="20dp"
+            android:textFontWeight="600"
+            android:textColor="#FFFFFF"
+    />
+    
+    <ImageView
+            android:id="@+id/image"
+            app:layout_constraintTop_toBottomOf="@id/backward"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="344dp"
+            android:layout_height="530dp"
+            android:background="#353535"
+    />
+
+    <View
+            android:id="@+id/divider"
+            app:layout_constraintTop_toBottomOf="@id/image"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="38dp"
+            android:background="#353535"
+    />
+    
+    <View
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/btn_open_camera"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="22dp"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:text="카메라 열기"
+            android:background="@drawable/rounded_12_gray_700_rectangle"
+    />
+    
+    <ImageView
+            app:layout_constraintTop_toTopOf="@id/btn_open_camera"
+            app:layout_constraintStart_toStartOf="@id/btn_open_camera"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/camera"
+    />
+
+    <View
+            android:id="@+id/upload_btn"
+            app:layout_constraintStart_toEndOf="@id/btn_open_camera"
+            app:layout_constraintTop_toTopOf="@id/btn_open_camera"
+            android:layout_width="234dp"
+            android:layout_height="60dp"
+            android:background="@drawable/rounded_12_main_color_rectangle"
+            android:layout_marginStart="10dp"
+    />
+
+    <TextView
+            app:layout_constraintTop_toTopOf="@id/upload_btn"
+            app:layout_constraintStart_toStartOf="@id/upload_btn"
+            android:layout_marginStart="75dp"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="업로드하기"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="20dp"
+            android:textFontWeight="600"
+            android:textColor="#FFFFFF"
+    />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

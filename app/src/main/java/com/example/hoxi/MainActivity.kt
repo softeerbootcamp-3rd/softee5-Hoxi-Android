@@ -5,16 +5,13 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
-import android.graphics.Typeface
 import android.location.LocationManager
 import android.os.Bundle
-import android.service.autofill.FieldClassification.Match
 import android.text.Editable
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.TextWatcher
 import android.text.style.ForegroundColorSpan
-import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
@@ -25,9 +22,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.marginStart
-import androidx.core.view.marginTop
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelState
 import net.daum.mf.map.api.MapPOIItem
@@ -50,8 +44,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setDestKeyListener()
 
-//        val intent = Intent(this, RequestInformation::class.java)
-//        startActivity(intent)
+        val intent = Intent(this, CameraActivity::class.java)
+        startActivity(intent)
 
         // 권한 체크
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)

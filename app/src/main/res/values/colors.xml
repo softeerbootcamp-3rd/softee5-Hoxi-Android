@@ -7,4 +7,10 @@
     <color name="gray">#F1F1F1</color>
     <color name="gray_300">#BEBEBE</color>
     <color name="orange">#FF6550</color>
+    <color name="gray_500">#898989</color>
+    <color name="gray_800">#3D3D3D</color>
+    <color name="gray_900">#2B2B2B</color>
+    <color name="gray_1000">#1C1C1C</color>
+    <color name="dark_mode_background">#1C1C1C</color>
+
 </resources>
