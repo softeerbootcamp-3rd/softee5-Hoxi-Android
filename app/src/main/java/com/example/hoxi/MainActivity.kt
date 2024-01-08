@@ -4,16 +4,30 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.Typeface
 import android.location.LocationManager
 import android.os.Bundle
 import android.service.autofill.FieldClassification.Match
+import android.text.Editable
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.TextWatcher
+import android.text.style.ForegroundColorSpan
+import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.marginStart
+import androidx.core.view.marginTop
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelState
 import net.daum.mf.map.api.MapPOIItem
@@ -34,9 +48,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setDestKeyListener()
 
-        val intent = Intent(this, RequestInformation::class.java)
-        startActivity(intent)
+//        val intent = Intent(this, RequestInformation::class.java)
+//        startActivity(intent)
 
         // 권한 체크
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -137,6 +152,7 @@ class MainActivity : AppCompatActivity() {
                     divider.toggleVisibility()
                     latestDest.toggleVisibility()
                     srcBox.changeAnchor(backBtn)
+                    clearRecommendedList()
                 }
             }
 
@@ -199,4 +215,116 @@ class MainActivity : AppCompatActivity() {
 
         this.layoutParams = layoutParams
     }
+
+    private fun setDestKeyListener(){
+        val destText = findViewById<EditText>(R.id.dest_location)
+        destText.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {
+                searchPlaces(s.toString())
+                if(s.toString().length == 0)
+                    clearRecommendedList()
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                searchPlaces(s.toString())
+            }
+        })
+    }
+    fun searchPlaces(query: String) {
+        val thread = Thread(Runnable {
+            try {
+                val url = URL("https://dapi.kakao.com/v2/local/search/keyword.json?query=$query")
+                val connection = url.openConnection() as HttpURLConnection
+                connection.requestMethod = "GET"
+                connection.setRequestProperty("Authorization", "KakaoAK e54a4cc8f2a5e289dd5e950624ad0e0f")
+
+                if (connection.responseCode == HttpURLConnection.HTTP_OK) {
+                    val reader = BufferedReader(InputStreamReader(connection.inputStream))
+                    val line = reader.readLine()
+                    val jsonObject = JSONObject(line)
+                    val documents = jsonObject.getJSONArray("documents")
+
+                    val layoutPlaces = findViewById<LinearLayout>(R.id.layout_places)
+                    layoutPlaces.removeAllViews() // 기존에 추가된 view를 모두 제거
+
+                    for (i in 0 until documents.length()) {
+                        val place = documents.getJSONObject(i)
+                        val name = place.getString("place_name")
+                        val address = place.getString("address_name")
+                        val latitude = place.getString("y")
+                        val longitude = place.getString("x")
+
+                        runOnUiThread {
+                            val textView = TextView(this) // TextView 생성
+                            val spannable = SpannableString(name) // SpannableString 생성
+                            // dp를 px로 변환
+                            val scale = resources.displayMetrics.density
+                            val px = 16 * scale
+                            val marginTop = 20 * scale
+                            val marginStart = 22 * scale
+
+                            // LayoutParams 생성
+                            val layoutParams = LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                            )
+
+                            // 상단 마진과 시작 마진 설정
+                            layoutParams.topMargin = marginTop.toInt()
+                            layoutParams.marginStart = marginStart.toInt()
+                            textView.layoutParams = layoutParams
+
+                            // TextView 글자 크기 설정 (단위는 px)
+                            textView.setTextSize(Dimension.DP, 40f)
+                            textView.setBackgroundColor(Color.WHITE)
+
+                            // 검색어와 일치하는 부분의 시작과 끝 인덱스를 구함
+                            val start = name.indexOf(query)
+                            val end = start + query.length
+
+                            // 검색어와 일치하는 부분에 회색 색상을 적용
+                            if (start != -1) {
+                                spannable.setSpan(
+                                    ForegroundColorSpan(Color.parseColor("#FF634E")),
+                                    start,
+                                    end,
+                                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                                )
+                            }
+
+                            textView.text = spannable // TextView에 name 설정
+
+                            // OnClickListener 설정
+                            textView.setOnClickListener {
+
+                                val intent = Intent(this, DestinationMap::class.java)
+                                intent.putExtra("placeName", name) // placeName 데이터를 intent에 추가
+                                intent.putExtra("address", address) // placeName 데이터를 intent에 추가
+                                intent.putExtra("latitude", latitude) // placeName 데이터를 intent에 추가
+                                intent.putExtra("longitude", longitude) // placeName 데이터를 intent에 추가
+                                intent.putExtra("src", findViewById<TextView>(R.id.src_location).text.toString())
+                                mapViewContainer.removeAllViews()
+                                startActivity(intent) // activity_request_information Activity로 이동
+                            }
+
+                            layoutPlaces.addView(textView) // LinearLayout에 TextView 추가
+                        }
+                    }
+                }
+
+                connection.disconnect()
+            } catch (e: Exception) {
+                println("뭐지" +e.message)
+            }
+        })
+        thread.start()
+    }
+
+    private fun clearRecommendedList(){
+        val layoutPlaces = findViewById<LinearLayout>(R.id.layout_places)
+        layoutPlaces.removeAllViews() // 기존에 추가된 view를 모두 제거
+    }
+
 }

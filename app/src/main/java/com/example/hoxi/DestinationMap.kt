@@ -32,6 +32,8 @@ class DestinationMap : AppCompatActivity() {
         try {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_destination_map)
+            setText()
+            setDestinationListener()
 
             // 권한 체크
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -43,6 +45,21 @@ class DestinationMap : AppCompatActivity() {
             mapView = MapView(this)
             mapViewContainer = findViewById(R.id.map_view)
             mapViewContainer.addView(mapView)
+
+            val latitude = intent.getStringExtra("latitude")?.toDouble()
+            val longitude = intent.getStringExtra("longitude")?.toDouble()
+
+            if(latitude != null && longitude != null) {
+                val mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude)
+                mapView.setMapCenterPoint(mapPoint, true)
+                val marker = MapPOIItem()
+                marker.itemName = "Marker"
+                marker.tag = 0
+                marker.mapPoint = mapPoint
+                marker.markerType = MapPOIItem.MarkerType.BluePin
+                marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin
+                mapView.addPOIItem(marker)
+            }
 
             mapView.setMapViewEventListener(object : MapView.MapViewEventListener {
                 override fun onMapViewInitialized(mapView: MapView) {
@@ -88,4 +105,28 @@ class DestinationMap : AppCompatActivity() {
             println("에러" + e.message)
         }
     }
+
+    private fun setText(){
+        val placeView = findViewById<TextView>(R.id.place_name)
+        val addressView = findViewById<TextView>(R.id.address)
+
+        val placeName = intent.getStringExtra("placeName")
+        val address = intent.getStringExtra("address")
+
+        placeView.setText(placeName)
+        addressView.setText(address)
+    }
+
+    private fun setDestinationListener(){
+        val settingBtn = findViewById<View>(R.id.setting_btn)
+
+        settingBtn.setOnClickListener{
+            val intent = Intent(this, RequestInformation::class.java)
+            intent.putExtra("src", getIntent().getStringExtra("src"))
+            intent.putExtra("placeName", getIntent().getStringExtra("placeName"))
+            mapViewContainer.removeAllViews()
+            startActivity(intent)
+        }
+    }
+
 }

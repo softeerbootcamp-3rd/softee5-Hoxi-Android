@@ -75,11 +75,11 @@
 
     <TextView
             android:id="@+id/src_location"
-            android:layout_width="80dp"
+            android:layout_width="290dp"
             android:layout_height="24dp"
             app:layout_constraintTop_toTopOf="@id/src_rectangle"
             app:layout_constraintStart_toEndOf="@id/pin"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="13dp"
             android:layout_marginStart="6dp"
             android:text="부산역"
             android:fontFamily="@font/pretendard_regular"
@@ -110,7 +110,7 @@
 
     <TextView
             android:id="@+id/dest_location"
-            android:layout_width="80dp"
+            android:layout_width="290dp"
             android:layout_height="24dp"
             app:layout_constraintTop_toTopOf="@id/dest_rectangle"
             app:layout_constraintStart_toEndOf="@id/dest_pin"

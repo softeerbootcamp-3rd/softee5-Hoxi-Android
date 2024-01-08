@@ -1,9 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical" android:layout_width="match_parent"
-                android:layout_height="match_parent">
-    <RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   android:orientation="vertical" android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/map_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-</RelativeLayout>
+    
+    <ImageButton
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="57dp"
+            android:background="@drawable/backward"
+    />
+
+    <View
+            android:id="@+id/white_circle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="244dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/white_circle"
+    />
+
+    <View
+            android:id="@+id/compass"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/white_circle"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_marginEnd="31dp"
+            android:layout_marginTop="11dp"
+
+            android:background="@drawable/compass_fill"
+    />
+    
+    <View
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/setting_box"
+            android:layout_width="match_parent"
+            android:layout_height="214dp"
+            android:background="@drawable/white_rectangle_20_top_radius"
+            android:elevation="50dp"
+    />
+
+    <TextView
+            android:id="@+id/place_name"
+            app:layout_constraintTop_toTopOf="@id/setting_box"
+            app:layout_constraintStart_toStartOf="@id/setting_box"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="20dp"
+            android:textFontWeight="600"
+            android:lineHeight="150dp"
+            android:textColor="#131313"
+            android:background="@null"
+            android:elevation="51dp"
+            android:outlineProvider="none"
+    />
+
+    <TextView
+            android:id="@+id/address"
+            app:layout_constraintTop_toBottomOf="@id/place_name"
+            app:layout_constraintStart_toStartOf="@id/place_name"
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="16dp"
+            android:textFontWeight="500"
+            android:textColor="#898989"
+            android:elevation="51dp"
+            android:outlineProvider="none"
+    />
+
+    <View
+            android:id="@+id/setting_btn"
+            app:layout_constraintTop_toBottomOf="@id/address"
+            app:layout_constraintStart_toStartOf="@id/address"
+            android:layout_marginTop="21dp"
+            android:layout_width="344dp"
+            android:layout_height="60dp"
+            android:background="@drawable/rounded_12_main_color_rectangle"
+            android:elevation="51dp"
+            android:outlineProvider="none"
+    />
+
+    <TextView
+            app:layout_constraintTop_toTopOf="@id/setting_btn"
+            app:layout_constraintStart_toStartOf="@id/setting_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="102dp"
+            android:layout_marginTop="15dp"
+            android:text="도착지로 설정하기"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="20dp"
+            android:textFontWeight="600"
+            android:textColor="#FFFFFF"
+            android:elevation="51dp"
+            android:outlineProvider="none"
+    />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

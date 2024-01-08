@@ -3,11 +3,16 @@ package com.example.hoxi
 import LuggageNotice
 import TimePickerListener
 import TimePickerModal
+import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.SpannableString
 import android.text.Spanned
+import android.text.TextUtils
+import android.text.TextUtils.EllipsizeCallback
 import android.text.TextWatcher
 import android.text.style.ForegroundColorSpan
 import android.view.View
@@ -22,13 +27,13 @@ class RequestInformation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_request_information)
-
         setPeriodListener()
         try {
             emphasizeText()
             setRadioListener()
             setCountListener()
             setDoneListener()
+            setSrcANDDest()
         } catch (e: Exception) {
             println("에러다!" + e.message)
         }
@@ -181,37 +186,10 @@ class RequestInformation : AppCompatActivity() {
     }
 
     fun setDoneListener(){
-//        val userName = findViewById<TextView>(R.id.user_name_text)
-//        val userPhone = findViewById<TextView>(R.id.user_phone_number_text)
-//        val accommodationContact = findViewById<TextView>(R.id.accommodation_contact_text)
-//        val hoursView = findViewById<TextView>(R.id.desired_arrival_time_hours)
-//        val no = findViewById<TextView>(R.id.no_over_28_inch_luggage_text)
-//        val yes = findViewById<TextView>(R.id.yes_over_28_inch_luggage_text)
         val plus =  findViewById<View>(R.id.plus)
         val minus =  findViewById<View>(R.id.minus)
         val paymentBtn = findViewById<View>(R.id.payment_box)
 
-//
-//        val textWatcher = object : TextWatcher {
-//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-//                // 입력하기 전에 조치
-//            }
-//
-//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-//            }
-//
-//            override fun afterTextChanged(s: Editable?) {
-//                // 입력이 끝났을 때 조치
-////                if(isDone()){
-////                    paymentBtn.setBackgroundResource(R.drawable.rounded_12_main_color_rectangle)
-////                } else{
-////                    paymentBtn.setBackgroundResource(R.drawable.rounded_12_gray_rectangle)
-////                }
-//            }
-//        }
-
-        // 각 TextView에 TextWatcher 설정
-        // plus, minus 버튼에 클릭 리스너 설정
         plus.setOnClickListener {
 
             val currentCount = findViewById<TextView>(R.id.luggage_count_text)
@@ -264,6 +242,55 @@ class RequestInformation : AppCompatActivity() {
                 charge.setTextColor(Color.parseColor("#D9D9D9"))
             }
         }
+
+        paymentBtn.setOnClickListener{
+            if (isDone()) {
+
+                val userName = findViewById<TextView>(R.id.user_name_text).text.toString()
+                val userPhone = findViewById<TextView>(R.id.user_phone_number_text).text.toString()
+                val accommodationContact = findViewById<TextView>(R.id.accommodation_contact_text).text.toString()
+                val luggageCount = getLuggageCount(findViewById<TextView>(R.id.luggage_count_text).text.toString())
+                val period = findViewById<TextView>(R.id.time_period).text.toString()
+                val hours = findViewById<TextView>(R.id.desired_arrival_time_hours).text.toString()
+                val minutes = findViewById<TextView>(R.id.desired_arrival_time_minutes).text.toString()
+                val no = findViewById<TextView>(R.id.no_over_28_inch_luggage_text).textColors
+                val requestMessage = findViewById<TextView>(R.id.request_message)
+                val src = getIntent().getStringExtra("src")
+                val placeName = getIntent().getStringExtra("placeName")
+                val charge = getLuggageCount(findViewById<TextView>(R.id.charge_text).text.toString())
+
+                val intent = Intent(this, Matching::class.java)
+                intent.putExtra("userName", userName)
+                intent.putExtra("userPhone", userPhone)
+                intent.putExtra("accommodationContact", accommodationContact)
+                intent.putExtra("luggageCount", luggageCount)
+                intent.putExtra("accommodationContact", accommodationContact)
+                intent.putExtra("time", period +"," + hours + "," + minutes)
+                intent.putExtra("isThereOver28InchCarrier", isThereOver28InchCarrier(no))
+
+                intent.putExtra("src", src)
+                intent.putExtra("placeName", placeName)
+
+                startActivity(intent)
+            }
+        }
+    }
+
+    private fun isThereOver28InchCarrier(no : ColorStateList) : Boolean{
+        val defaultTextColor = Color.parseColor("#D9D9D9")
+        return no.equals(defaultTextColor)
+    }
+
+    private fun setSrcANDDest(){
+        val src = getIntent().getStringExtra("src")
+        val dest = getIntent().getStringExtra("placeName")
+
+        val srcView = findViewById<TextView>(R.id.src_location)
+        srcView.setText(src)
+        srcView.ellipsize = TextUtils.TruncateAt.END
+        val destView = findViewById<TextView>(R.id.dest_location)
+        destView.setText(dest)
+        destView.ellipsize = TextUtils.TruncateAt.END
     }
 
 }
