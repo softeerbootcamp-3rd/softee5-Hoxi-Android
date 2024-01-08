@@ -58,7 +58,7 @@
             app:layout_constraintTop_toBottomOf="@+id/home"
             app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
             android:scrollbars="none"
-    >
+            tools:layout_editor_absoluteX="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -99,7 +99,7 @@
                     android:textSize="16dp"
                     android:textColor="#191919"
                     android:textFontWeight="500"/>
-            
+
             <ImageView
                     android:id="@+id/arrow_right_fill"
                     android:layout_width="24dp"
@@ -157,7 +157,7 @@
                     android:background="#F1F1F1"
 
             />
-            
+
             <TextView
                     android:id="@+id/user_info_title"
                     app:layout_constraintTop_toBottomOf="@id/divider"
@@ -174,7 +174,7 @@
                     android:textColor="#282828"
 
             />
-            
+
             <View
                     android:id="@+id/user_name_box"
                     app:layout_constraintTop_toBottomOf="@id/user_info_title"
@@ -624,7 +624,6 @@
             />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
     <View
             android:id="@+id/bottom_bar"
             app:layout_constraintTop_toBottomOf="@id/scroll_view"

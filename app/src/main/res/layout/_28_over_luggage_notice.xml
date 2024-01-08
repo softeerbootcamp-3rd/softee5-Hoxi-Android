@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:background="@drawable/rounded_20_white_rectangle"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+            android:id="@+id/notice_text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="30dp"
+            android:text="28인치 이상 캐리어 크기의\n 짐인 경우, 담당 택시 기사님과의\n 연락이 필요합니다"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="20dp"
+            android:textFontWeight="600"
+            android:lineHeight="30dp"
+            android:textColor="#191919"
+            android:textAlignment="center"
+    />
+
+
+    <TextView
+            android:id="@+id/done_btn"
+            android:layout_width="276dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="26dp"
+            android:paddingTop="12dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="확인"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/notice_text"
+            android:background="@drawable/rounded_12_main_color_rectangle"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="18dp"
+            android:textFontWeight="600"
+            android:textAlignment="center"
+    />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
