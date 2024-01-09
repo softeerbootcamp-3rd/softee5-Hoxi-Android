@@ -57,7 +57,7 @@
             android:id="@+id/place_name"
             app:layout_constraintTop_toTopOf="@id/setting_box"
             app:layout_constraintStart_toStartOf="@id/setting_box"
-            android:layout_marginStart="22dp"
+            android:layout_marginStart="26dp"
             android:layout_marginTop="24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

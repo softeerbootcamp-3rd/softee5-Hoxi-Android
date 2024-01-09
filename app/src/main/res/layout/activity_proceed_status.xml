@@ -373,7 +373,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="266dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/rounded_12_gray_400_rectangle_dark_mode"
+                    android:background="@drawable/rounded_12_gray_400_rectangle_border_dark_mode"
             />
 
             <TextView
@@ -402,7 +402,7 @@
             android:id="@+id/bottom_divider"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="148dp"
+            android:layout_marginBottom="108dp"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="#FFFFFF"
@@ -420,7 +420,7 @@
             app:layout_constraintTop_toTopOf="@id/bottom_divider"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="34dp"
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:background="@drawable/rounded_12_gray_700_rectangle"
@@ -447,7 +447,7 @@
             app:layout_constraintTop_toTopOf="@id/bottom_divider"
             app:layout_constraintStart_toEndOf="@id/back_button"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="34dp"
             android:layout_width="234dp"
             android:layout_height="60dp"
             android:background="@drawable/rounded_12_main_color_rectangle"
@@ -469,7 +469,14 @@
             android:textColor="#FFFFFF"
     />
 
-
+    <View
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="108dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#2B2B2B"
+    />
 
 
 

@@ -110,7 +110,7 @@
             android:layout_width="110dp"
             android:layout_height="25dp"
             android:layout_marginTop="6dp"
-            android:background="@drawable/rounded_6_rectangle"
+            android:background="@drawable/rounded_6_red_rectangle"
     />
     <TextView
             app:layout_constraintTop_toTopOf="@id/car_number_box"

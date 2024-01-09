@@ -16,6 +16,7 @@ import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.Dimension
@@ -44,6 +45,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setDestKeyListener()
+
+        //val intent = Intent(this, RequestDetail::class.java)
+//        val intent = Intent(this, LoadingWhileFindingUserLocation::class.java)
+//        val intent = Intent(this, DarkMap::class.java)
+        val intent = Intent(this, ProceedStatus::class.java)
+
+        startActivity(intent)
+
 
         // 권한 체크
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
@@ -132,6 +141,7 @@ class MainActivity : AppCompatActivity() {
                 val srcBox =  findViewById<View>(R.id.src_rectangle_box)
                 val divider = findViewById<View>(R.id.divider)
                 val latestDest = findViewById<View>(R.id.latest_dest)
+                val navigationBar = findViewById<View>(R.id.navigation_bar)
 
                 if(newState == PanelState.DRAGGING) {
                     hoxiLogo.toggleVisibility()
@@ -143,6 +153,7 @@ class MainActivity : AppCompatActivity() {
                     backBtn.toggleVisibility()
                     divider.toggleVisibility()
                     latestDest.toggleVisibility()
+                    navigationBar.toggleVisibility()
                     srcBox.changeAnchor(backBtn)
                     clearRecommendedList()
                 }
@@ -213,17 +224,37 @@ class MainActivity : AppCompatActivity() {
         destText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
                 searchPlaces(s.toString())
-                if(s.toString().length == 0)
+                if(s.toString().length == 0) {
                     clearRecommendedList()
+                    inactivateDestIcon()
+                }
+                else{
+                    activateDestIcon()
+                }
             }
 
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 searchPlaces(s.toString())
+                if(s.toString().length == 0) {
+                    clearRecommendedList()
+                    inactivateDestIcon()
+                }
+                else{
+                    activateDestIcon()
+                }
             }
         })
     }
+
+    private fun activateDestIcon(){
+        findViewById<ImageView>(R.id.dest_pin).setImageResource(R.drawable.pin3)
+    }
+    private fun inactivateDestIcon(){
+        findViewById<ImageView>(R.id.dest_pin).setImageResource(R.drawable.empty_pin)
+    }
+
     fun searchPlaces(query: String) {
         val thread = Thread(Runnable {
             try {

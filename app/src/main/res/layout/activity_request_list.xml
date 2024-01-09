@@ -5,17 +5,22 @@
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
                                                    tools:context=".CameraActivity"
-                                                   android:background="@color/dark_mode_background">
+                                                   android:background="#1C1C1C">
 
-    <ImageView
+    <TextView
             android:id="@+id/hoxi_logo"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="65dp"
-            android:layout_width="55.442dp"
-            android:layout_height="13dp"
-            android:background="@drawable/hoxi_logo"
+            android:layout_marginTop="57dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="요청 리스트"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="20dp"
+            android:textFontWeight="600"
+            android:lineHeight="150dp"
+            android:textColor="#FFFFFF"
     />
 
     <ImageButton
@@ -27,23 +32,14 @@
             android:layout_marginTop="60dp"
             android:background="@drawable/user_white"
     />
-    
-    <View
-            android:id="@+id/divider"
-            app:layout_constraintTop_toBottomOf="@id/hoxi_logo"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#2B2B2B"
-    />
+
     
     <ScrollView
-            app:layout_constraintTop_toBottomOf="@id/divider"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_width="344dp"
             android:layout_height="500dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="120dp"
             android:layout_marginStart="20dp"
     >
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -315,7 +311,7 @@
                     android:layout_marginTop="24dp"
                     android:layout_width="150dp"
                     android:layout_height="47dp"
-                    android:background="@drawable/rounded_12_gray_400_rectangle_dark_mode"
+                    android:background="@drawable/rounded_12_gray_400_rectangle_border_dark_mode"
             />
 
             <TextView
@@ -353,15 +349,14 @@
             android:id="@+id/bottom_divider"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="126dp"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#2B2B2B"
+            android:layout_height="126dp"
+            android:background="@color/gray_1000"
     />
 
     <View
             android:id="@+id/accept_btn"
-            app:layout_constraintTop_toBottomOf="@id/bottom_divider"
+            app:layout_constraintTop_toTopOf="@id/bottom_divider"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="22dp"
             android:layout_marginStart="20dp"
@@ -382,7 +377,7 @@
             android:fontFamily="@font/pretendard_regular"
             android:textSize="20dp"
             android:textFontWeight="600"
-            android:textColor="#FFFFFF"
+            android:textColor="#A5A5A5"
     />
 
 

@@ -27,7 +27,7 @@
                 android:id="@+id/sliding_bar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/white_rectangle_top_radius"
+                android:background="@drawable/white_rectangle_20_top_radius"
         >
             <ImageButton
                     android:id="@+id/back_button"
@@ -72,11 +72,9 @@
                     android:layout_marginStart="6dp"
                     android:text="출발 위치"
                     android:fontFamily="@font/pretendard_regular"
-                    android:lineSpacingExtra="5sp"
-                    android:gravity="center_vertical"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:textColor="#191919"
-                    android:textFontWeight="500"/>
+                    android:textFontWeight="600"/>
 
             <View
                     android:id="@+id/dest_rectangle_box"
@@ -93,7 +91,7 @@
                     android:id="@+id/dest_pin"
                     app:layout_constraintTop_toTopOf="@id/dest_rectangle_box"
                     app:layout_constraintStart_toStartOf="@id/dest_rectangle_box"
-                    android:background="@drawable/pin2"
+                    android:background="@drawable/empty_pin"
                     android:layout_marginTop="13dp"
                     android:layout_marginStart="14dp"
                     android:layout_width="24dp"
@@ -110,9 +108,9 @@
                     android:fontFamily="@font/pretendard_regular"
                     android:lineSpacingExtra="5sp"
                     android:gravity="center_vertical"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:textColor="#191919"
-                    android:textFontWeight="500"
+                    android:textFontWeight="600"
                     android:hint="도착지를 입력하세요."
                     android:background="@null"
             />
@@ -138,7 +136,7 @@
                     android:text="배차 시작하기"
                     android:fontFamily="@font/pretendard_regular"
                     android:textSize="18dp"
-                    android:textFontWeight="500"
+                    android:textFontWeight="600"
                     android:textColor="#FFFFFF"
                     android:textAlignment="center"
             />
@@ -191,25 +189,33 @@
     </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
     <View
-            android:id="@+id/hoxi_logo"
+            android:id="@+id/navigation_bar"
             app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#F5F5F5"
+    />
+
+    <View
+            android:id="@+id/hoxi_logo"
+            app:layout_constraintBottom_toBottomOf="@id/navigation_bar"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_width="55.44dp"
-            android:layout_height="13.78dp"
+            android:layout_width="56dp"
+            android:layout_height="22.09dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="65dp"
+            android:layout_marginBottom="21.22dp"
             android:background="@drawable/hoxi_logo"
 
     />
 
     <ImageButton
             android:id="@+id/user_icon"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/navigation_bar"
             app:layout_constraintStart_toEndOf="@id/hoxi_logo"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="264.56dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/user"
     />
 

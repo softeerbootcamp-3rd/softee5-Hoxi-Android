@@ -19,7 +19,7 @@
             android:fontFamily="@font/pretendard_regular"
             android:textSize="24dp"
             android:lineHeight="36dp"
-            android:textFontWeight="500"
+            android:textFontWeight="600"
             android:textColor="#FFFFFF"
 
     />

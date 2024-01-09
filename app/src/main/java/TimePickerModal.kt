@@ -28,6 +28,7 @@ class TimePickerModal(private val listener: TimePickerListener) : DialogFragment
             // 여기서 Dialog를 직접 생성하고 설정
             val dialog = Dialog(it)
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE) // 타이틀바 제거
+            dialog.window?.setDimAmount(0.85f)
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT)) // 배경 투명하게
             dialog.setContentView(view) // 뷰 설정
 

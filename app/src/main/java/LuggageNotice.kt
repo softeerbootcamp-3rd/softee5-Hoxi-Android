@@ -20,6 +20,7 @@ class LuggageNotice : DialogFragment() {
             val dialog = Dialog(it)
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE) // 타이틀바 제거
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT)) // 배경 투명하게
+            dialog.window?.setDimAmount(0.85f)
             dialog.window?.setLayout(380, 300) // 너비 400, 높이 300
             val density = resources.displayMetrics.density
             val widthPx = (320 * density).toInt()

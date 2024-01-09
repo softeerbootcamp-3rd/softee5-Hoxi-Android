@@ -56,10 +56,11 @@ class DestinationMap : AppCompatActivity() {
                 marker.itemName = "Marker"
                 marker.tag = 0
                 marker.mapPoint = mapPoint
-                marker.markerType = MapPOIItem.MarkerType.BluePin
-                marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin
+                marker.markerType = MapPOIItem.MarkerType.CustomImage
+                marker.customImageResourceId = R.drawable.pin3
                 mapView.addPOIItem(marker)
             }
+
 
             mapView.setMapViewEventListener(object : MapView.MapViewEventListener {
                 override fun onMapViewInitialized(mapView: MapView) {
