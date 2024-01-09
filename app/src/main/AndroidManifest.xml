@@ -22,10 +22,19 @@
             android:usesCleartextTraffic="true"
             tools:targetApi="31">
         <activity
+                android:name=".ProceedStatus"
+                android:exported="false"/>
+        <activity
+                android:name=".DarkMap"
+                android:exported="false"/>
+        <activity
+                android:name=".RequestDetail"
+                android:exported="false"/>
+        <activity
                 android:name=".RequestList"
                 android:exported="false"/>
         <activity
-                android:name=".LodingWhileFindingUserLocation"
+                android:name=".LoadingWhileFindingUserLocation"
                 android:exported="false"/>
         <activity
                 android:name=".CompleteHandingOut"

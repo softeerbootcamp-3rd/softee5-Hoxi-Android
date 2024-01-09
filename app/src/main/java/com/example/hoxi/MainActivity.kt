@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.LocationManager
 import android.os.Bundle
+import android.service.autofill.FieldClassification.Match
 import android.text.Editable
 import android.text.Spannable
 import android.text.SpannableString
@@ -43,9 +44,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setDestKeyListener()
-
-        val intent = Intent(this, RequestList::class.java)
-        startActivity(intent)
 
         // 권한 체크
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
