@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setDestKeyListener()
 
-        val intent = Intent(this, CameraActivity::class.java)
+        val intent = Intent(this, RequestList::class.java)
         startActivity(intent)
 
         // 권한 체크
