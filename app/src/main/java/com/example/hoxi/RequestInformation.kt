@@ -290,6 +290,7 @@ class RequestInformation : AppCompatActivity() {
                 val intent = Intent(this, Matching::class.java)
                 val requestDto = CallInfo(1, CallData(src.toString(), placeName.toString(),2.5,
                     formatTime("$period $hours:$minutes"),luggageCount,requestMessage,charge, false), ReservationData(userName, userPhone, accommodationContact))
+//                val requestDto = CallInfo(1, CallData("출발지", "도착지",10.0, "AM 12:00",3,"요청사항",10000,false), ReservationData("김지훈", "010-4920-2323", "010-2424-2424"))
                 Log.i("infomation", requestDto.toString());
                 sendPostRequest(requestDto)
                 intent.putExtra("userName", userName)
