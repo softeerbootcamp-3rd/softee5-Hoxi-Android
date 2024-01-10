@@ -6,33 +6,35 @@ import TimePickerModal
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.text.Editable
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.TextUtils
-import android.text.TextUtils.EllipsizeCallback
-import android.text.TextWatcher
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.View
-import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
-import kotlin.math.min
+import com.example.hoxi.service.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Tag
 
 
 class RequestInformation : AppCompatActivity() {
 
-
+    private lateinit var apiService: ApiService
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_request_information)
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://13.124.164.211")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        apiService = retrofit.create(ApiService::class.java)
         setPeriodListener()
         try {
             emphasizeText()
@@ -186,7 +188,27 @@ class RequestInformation : AppCompatActivity() {
                 return true
             }
     }
+    private fun sendPostRequest(requestDto: CallInfo) {
+        val call: Call<CallResponseDto> = apiService.makeCall(requestDto)
+        call.enqueue(object : Callback<CallResponseDto> {
+            override fun onResponse(call: Call<CallResponseDto>, response: Response<CallResponseDto>) {
+                if (response.isSuccessful && response.body() != null) {
+                    val responseDto: CallResponseDto = response.body()!!
+                    // 서버 응답을 처리하는 코드 작성
+                    println("responseDto = ${responseDto}")
+                    Log.i("테스트", responseDto.data.toString())
+                } else {
+                    Log.i("테스트", response.body().toString())
+                    // 실패 시 처리하는 코드 작성
+                }
+            }
 
+            override fun onFailure(call: Call<CallResponseDto>, t: Throwable) {
+                // 요청 실패 시 처리하는 코드 작성
+                println("responseDto = ${t.message}")
+            }
+        })
+    }
     fun String.isEmpty() : Boolean{
         return this.isNullOrEmpty()
     }
@@ -259,12 +281,17 @@ class RequestInformation : AppCompatActivity() {
                 val hours = findViewById<TextView>(R.id.desired_arrival_time_hours).text.toString()
                 val minutes = findViewById<TextView>(R.id.desired_arrival_time_minutes).text.toString()
                 val no = findViewById<TextView>(R.id.no_over_28_inch_luggage_text).textColors
-                val requestMessage = findViewById<TextView>(R.id.request_message)?.toString()
-                //val src = getIntent().getStringExtra("src").toString()
-                //val placeName = getIntent().getStringExtra("placeName").toString()
+                val requestMessage = "이것은 추가 메세지"
+                val src = getIntent().getStringExtra("src")
+                val placeName = getIntent().getStringExtra("placeName")
                 val charge = getLuggageCount(findViewById<TextView>(R.id.charge_text).text.toString())
-
+                val dest = getIntent().getStringExtra("placeName")
                 val intent = Intent(this, Matching::class.java)
+                val requestDto = CallInfo(1, CallData(src.toString(), placeName.toString(),2.5,
+                    formatTime("$period $hours:$minutes"),luggageCount,requestMessage,charge, false), ReservationData(userName, userPhone, accommodationContact))
+//                val requestDto = CallInfo(1, CallData("출발지", "도착지",10.0, "AM 12:00",3,"요청사항",10000,false), ReservationData("김지훈", "010-4920-2323", "010-2424-2424"))
+                Log.i("infomation", requestDto.toString());
+                sendPostRequest(requestDto)
                 intent.putExtra("userName", userName)
                 intent.putExtra("userPhone", userPhone)
                 intent.putExtra("accommodationContact", accommodationContact)
@@ -307,7 +334,20 @@ class RequestInformation : AppCompatActivity() {
         val defaultTextColor = Color.parseColor("#D9D9D9")
         return no.equals(defaultTextColor)
     }
+    fun formatTime(input: String): String {
+        val parts = input.split(" ") // 문자열을 공백을 기준으로 분할
+        val amPm = parts[0] // AM 또는 PM
 
+        val timeParts = parts[1].split(":") // 시간과 분을 나누기 위해 콜론을 기준으로 분할
+        val hour = timeParts[0].substring(0, 2).toInt() // 시간 (예: "01"에서 숫자로 변환)
+        val minute = timeParts[1].substring(0, 2) // 분
+
+        // 시간 형식을 조정하여 AM 05:30 또는 PM 01:30 형식으로 반환
+        val formattedHour = if (hour < 12 && amPm.equals("PM", ignoreCase = true)) hour + 12 else hour
+        val formattedTime = String.format("%02d:%s", formattedHour, minute)
+
+        return "$amPm $formattedTime"
+    }
     private fun setSrcANDDest(){
         val src = getIntent().getStringExtra("src")
         val dest = getIntent().getStringExtra("placeName")
