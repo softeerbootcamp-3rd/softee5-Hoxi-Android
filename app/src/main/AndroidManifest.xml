@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
-          package="com.example.hoxi"
->
+          package="com.example.hoxi">
     <!-- 카카오맵 권한 허용 -->
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/> <!-- 카메라 권한 허용 -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-feature android:name="android.hardware.camera"/>
 
     <application
-            android:usesCleartextTraffic="true"
             android:allowBackup="true"
             android:dataExtractionRules="@xml/data_extraction_rules"
             android:fullBackupContent="@xml/backup_rules"
@@ -18,8 +19,55 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.Hoxi"
+            android:usesCleartextTraffic="true"
             tools:targetApi="31">
-        <meta-data android:name="com.kakao.sdk.AppKey" android:value="bdfced61c32956203c046688e506b54e"/>
+        <activity
+                android:name=".rounded_6_red_rectangle"
+                android:exported="false"/>
+        <activity
+                android:name=".ProceedStatus"
+                android:exported="false"/>
+        <activity
+                android:name=".DarkMap"
+                android:exported="false"/>
+        <activity
+                android:name=".RequestDetail"
+                android:exported="false"/>
+        <activity
+                android:name=".RequestList"
+                android:exported="false"/>
+        <activity
+                android:name=".LoadingWhileFindingUserLocation"
+                android:exported="false"/>
+        <activity
+                android:name=".CompleteHandingOut"
+                android:exported="false"/>
+        <activity
+                android:name=".CameraActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".ImageUpload"
+                android:exported="false"/>
+        <activity
+                android:name=".TimePickerModal"
+                android:exported="false"/>
+        <activity
+                android:name=".HandOverStatus"
+                android:exported="false"/>
+        <activity
+                android:name=".Matching"
+                android:exported="false"/>
+        <activity
+                android:name=".DestinationMap"
+                android:exported="false"/>
+        <activity
+                android:name=".RequestInformation"
+                android:exported="false"/>
+
+        <meta-data
+                android:name="com.kakao.sdk.AppKey"
+                android:value="bdfced61c32956203c046688e506b54e"/>
+
         <activity
                 android:name=".MainActivity"
                 android:exported="true">

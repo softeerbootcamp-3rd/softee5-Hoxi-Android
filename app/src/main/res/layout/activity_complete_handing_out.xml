@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   tools:context=".CameraActivity"
+                                                   android:background="@color/dark_mode_background">
+    <TextView
+            android:id="@+id/title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="111dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="김미로 고객님의\n짐 전달이 완료되었습니다!"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="30dp"
+            android:textFontWeight="500"
+            android:lineHeight="45dp"
+            android:textColor="#FFFFFF"
+    />
+
+
+
+    <View
+            android:id="@+id/upload_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="344dp"
+            android:layout_height="60dp"
+            android:background="@drawable/rounded_12_main_color_rectangle"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="44dp"
+    />
+
+    <TextView
+            app:layout_constraintTop_toTopOf="@id/upload_btn"
+            app:layout_constraintStart_toStartOf="@id/upload_btn"
+            android:layout_marginStart="147dp"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="홈으로"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="20dp"
+            android:textFontWeight="600"
+            android:textColor="#FFFFFF"
+    />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

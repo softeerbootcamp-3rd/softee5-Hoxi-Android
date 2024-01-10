@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   tools:context=".CameraActivity"
+                                                   android:background="@color/dark_mode_background">
+
+    <TextView
+            android:id="@+id/request_detail_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="111dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="김미로님의\n위치 정보를 찾고 있습니다..."
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="24dp"
+            android:lineHeight="36dp"
+            android:textFontWeight="600"
+            android:textColor="#FFFFFF"
+
+    />
+
+    <View
+            android:id="@+id/location_box"
+            app:layout_constraintTop_toBottomOf="@id/request_detail_title"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_width="344dp"
+            android:layout_height="120dp"
+            android:background="@drawable/rounded_16_gray_700_rectangle"
+    />
+
+    <View
+            android:id="@+id/circle_box"
+            app:layout_constraintTop_toTopOf="@id/location_box"
+            app:layout_constraintStart_toStartOf="@id/location_box"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="26dp"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:background="@drawable/gray_700_circle"
+    />
+
+    <TextView
+            app:layout_constraintTop_toTopOf="@id/circle_box"
+            app:layout_constraintStart_toStartOf="@id/circle_box"
+            android:layout_marginStart="5.5dp"
+            android:layout_marginTop="20.5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12.5km"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="18dp"
+            android:textFontWeight="500"
+            android:textColor="#FFFFFF"
+    />
+
+    <ImageView
+            android:id="@+id/pin"
+            app:layout_constraintTop_toTopOf="@id/location_box"
+            app:layout_constraintStart_toStartOf="@id/location_box"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="21.5dp"
+            android:background="@drawable/pin"
+    />
+
+    <TextView
+            android:id="@+id/src"
+            app:layout_constraintTop_toTopOf="@id/location_box"
+            app:layout_constraintStart_toEndOf="@id/pin"
+            android:layout_marginStart="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="부산 초량제3동 부산역"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="20dp"
+            android:textFontWeight="500"
+            android:textColor="#FFF"
+    />
+
+    <ImageView
+            android:id="@+id/line"
+            app:layout_constraintStart_toStartOf="@id/pin"
+            app:layout_constraintTop_toBottomOf="@id/pin"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/line"
+    />
+
+    <ImageView
+            android:id="@+id/dest"
+            app:layout_constraintTop_toBottomOf="@+id/line"
+            app:layout_constraintStart_toStartOf="@id/line"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/pin3"
+    />
+
+    <TextView
+            app:layout_constraintTop_toBottomOf="@id/src"
+            app:layout_constraintStart_toStartOf="@id/src"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="파라다이스호텔부산"
+            android:fontFamily="@font/pretendard_regular"
+            android:layout_marginTop="26dp"
+            android:textSize="20dp"
+            android:textFontWeight="500"
+            android:textColor="#FFF"
+    />
+</androidx.constraintlayout.widget.ConstraintLayout>

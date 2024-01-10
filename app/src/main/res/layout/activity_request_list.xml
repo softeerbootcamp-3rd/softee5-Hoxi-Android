@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   tools:context=".CameraActivity"
+                                                   android:background="#1C1C1C">
+
+    <TextView
+            android:id="@+id/hoxi_logo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="57dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="요청 리스트"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="20dp"
+            android:textFontWeight="600"
+            android:lineHeight="150dp"
+            android:textColor="#FFFFFF"
+    />
+
+    <ImageButton
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/user_white"
+    />
+
+    
+    <ScrollView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="344dp"
+            android:layout_height="500dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginStart="20dp"
+    >
+        <LinearLayout
+                android:id="@+id/item_list"
+                android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical"
+        >
+        <include layout="@layout/item"
+                 android:layout_width="344dp"
+                 android:layout_height="501dp"
+                 android:layout_marginTop="10dp"
+        />
+        <include layout="@layout/item"
+                 android:layout_width="344dp"
+                 android:layout_height="501dp"
+                 android:layout_marginTop="10dp"
+        />
+        <include layout="@layout/item"
+                 android:layout_width="344dp"
+                 android:layout_height="501dp"
+                 android:layout_marginTop="10dp"
+        />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <View
+            android:id="@+id/bottom_divider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="126dp"
+            android:background="@color/gray_1000"
+    />
+
+    <View
+            android:id="@+id/accept_btn"
+            app:layout_constraintTop_toTopOf="@id/bottom_divider"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="22dp"
+            android:layout_marginStart="20dp"
+            android:layout_width="344dp"
+            android:layout_height="60dp"
+            android:background="@drawable/rounded_12_gray_700_rectangle"
+    />
+
+    <TextView
+            android:id="@+id/accept_text"
+            app:layout_constraintTop_toTopOf="@id/accept_btn"
+            app:layout_constraintStart_toStartOf="@id/accept_btn"
+            android:layout_marginStart="138dp"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="수락하기"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="20dp"
+            android:textFontWeight="600"
+            android:textColor="#A5A5A5"
+    />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
