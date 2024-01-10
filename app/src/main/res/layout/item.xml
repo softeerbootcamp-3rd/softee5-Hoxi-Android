@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   android:id="@+id/item"
+                                                   android:layout_width="344dp"
+                                                   android:layout_height="501dp"
+                                                   android:background="@drawable/rounded_12_gray_800_rectangle"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+>
+        <View
+                android:id="@+id/circle_box"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="39dp"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:background="@drawable/gray_700_circle"
+        />
+
+        <TextView
+                app:layout_constraintTop_toTopOf="@id/circle_box"
+                app:layout_constraintStart_toStartOf="@id/circle_box"
+                android:layout_marginStart="5.5dp"
+                android:layout_marginTop="20.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12.5km"
+                android:fontFamily="@font/pretendard_regular"
+                android:textSize="18dp"
+                android:textFontWeight="500"
+                android:textColor="#FFFFFF"
+        />
+
+        <ImageView
+                android:id="@+id/pin"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="33dp"
+                android:background="@drawable/pin"
+        />
+
+        <TextView
+                android:id="@+id/src"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/pin"
+                android:layout_marginStart="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="부산 초량제3동 부산역"
+                android:fontFamily="@font/pretendard_regular"
+                android:textSize="20dp"
+                android:textFontWeight="500"
+                android:textColor="#FFF"
+        />
+
+        <ImageView
+                android:id="@+id/line"
+                app:layout_constraintStart_toStartOf="@id/pin"
+                app:layout_constraintTop_toBottomOf="@id/pin"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/line"
+        />
+
+        <ImageView
+                android:id="@+id/dest"
+                app:layout_constraintTop_toBottomOf="@+id/line"
+                app:layout_constraintStart_toStartOf="@id/line"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/pin3"
+        />
+
+        <TextView
+                android:id="@+id/dest_text"
+                app:layout_constraintTop_toBottomOf="@id/src"
+                app:layout_constraintStart_toStartOf="@id/src"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="파라다이스호텔부산"
+                android:fontFamily="@font/pretendard_regular"
+                android:layout_marginTop="26dp"
+                android:textSize="20dp"
+                android:textFontWeight="500"
+                android:textColor="#FFF"
+        />
+
+        <View
+                android:id="@+id/item_top_divider"
+                app:layout_constraintTop_toBottomOf="@id/dest"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#3D3D3D"
+        />
+
+        <ImageView
+                android:id="@+id/time_icon"
+                app:layout_constraintTop_toTopOf="@id/item_top_divider"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="37dp"
+                android:layout_marginTop="31dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/time"
+        />
+
+        <TextView
+                android:id="@+id/time_text"
+                app:layout_constraintTop_toBottomOf="@id/item_top_divider"
+                app:layout_constraintStart_toEndOf="@id/time_icon"
+                android:layout_marginStart="31dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00 : 00 : 00"
+                android:fontFamily="@font/pretendard_regular"
+                android:textSize="34dp"
+                android:textFontWeight="600"
+                android:textColor="#FFFFFF"
+        />
+
+        <ImageView
+                android:id="@+id/luggage_icon"
+                app:layout_constraintTop_toBottomOf="@id/time_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="29dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/suitcase"
+        />
+
+        <TextView
+                android:id="@+id/luggage_count_title"
+                app:layout_constraintTop_toBottomOf="@id/time_text"
+                app:layout_constraintStart_toEndOf="@id/luggage_icon"
+                android:layout_marginStart="31dp"
+                android:layout_marginTop="24dp"
+                android:text="짐 개수"
+                android:fontFamily="@font/pretendard_regular"
+                android:textSize="18dp"
+                android:textFontWeight="500"
+                android:textColor="#A5A5A5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <ImageView
+                android:id="@+id/pipe"
+                app:layout_constraintTop_toTopOf="@id/luggage_count_title"
+                app:layout_constraintStart_toEndOf="@id/luggage_count_title"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5.25dp"
+                android:layout_width="2dp"
+                android:layout_height="16.5dp"
+                android:background="@drawable/pipe_gray"
+        />
+
+        <TextView
+                app:layout_constraintTop_toTopOf="@id/luggage_count_title"
+                app:layout_constraintStart_toEndOf="@id/pipe"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2개"
+                android:fontFamily="@font/pretendard_regular"
+                android:textSize="18dp"
+                android:textFontWeight="600"
+                android:textColor="#FFFFFF"
+        />
+
+        <View
+                android:id="@+id/capacity"
+                app:layout_constraintTop_toBottomOf="@id/luggage_count_title"
+                app:layout_constraintStart_toStartOf="@id/luggage_count_title"
+                android:layout_marginTop="12dp"
+                android:layout_width="82dp"
+                android:layout_height="34dp"
+                android:background="@drawable/rounded_8_main_color_rectangle_dark_mode"
+        />
+
+        <TextView
+                app:layout_constraintTop_toTopOf="@id/capacity"
+                app:layout_constraintStart_toStartOf="@id/capacity"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="3.5dp"
+                android:text="대용량"
+                android:fontFamily="@font/pretendard_regular"
+                android:textSize="18dp"
+                android:textFontWeight="500"
+                android:textColor="#FFDAD5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <View
+                android:id="@+id/request"
+                app:layout_constraintTop_toTopOf="@id/capacity"
+                app:layout_constraintStart_toEndOf="@id/capacity"
+                android:layout_marginStart="8dp"
+                android:layout_width="82dp"
+                android:layout_height="34dp"
+                android:background="@drawable/rounded_8_main_color_rectangle_dark_mode"
+        />
+
+        <TextView
+                app:layout_constraintTop_toTopOf="@id/request"
+                app:layout_constraintStart_toStartOf="@id/request"
+                android:layout_marginStart="10.5dp"
+                android:layout_marginTop="3.5dp"
+                android:text="요청사항"
+                android:fontFamily="@font/pretendard_regular"
+                android:textSize="18dp"
+                android:textFontWeight="500"
+                android:textColor="#FFDAD5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <View
+                android:id="@+id/item_middle_divider"
+                app:layout_constraintTop_toBottomOf="@id/capacity"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#3D3D3D"
+        />
+
+        <TextView
+                android:id="@+id/expected_charge_title"
+                app:layout_constraintTop_toBottomOf="@id/item_middle_divider"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="39.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="예상 금액"
+                android:fontFamily="@font/pretendard_regular"
+                android:textSize="18dp"
+                android:textFontWeight="500"
+                android:textColor="#898989"
+        />
+
+        <TextView
+                android:id="@+id/expected_charge_text"
+                app:layout_constraintTop_toBottomOf="@id/item_middle_divider"
+                app:layout_constraintStart_toEndOf="@id/expected_charge_title"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15000원"
+                android:fontFamily="@font/pretendard_regular"
+                android:textSize="44dp"
+                android:textFontWeight="600"
+                android:textColor="@color/orange"
+        />
+
+        <View
+                android:id="@+id/view_detail_btn"
+                app:layout_constraintTop_toBottomOf="@id/expected_charge_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_width="150dp"
+                android:layout_height="47dp"
+                android:background="@drawable/rounded_12_gray_400_rectangle_border_dark_mode"
+        />
+
+        <TextView
+                android:id="@+id/view_detail_text"
+                app:layout_constraintTop_toTopOf="@id/view_detail_btn"
+                app:layout_constraintStart_toStartOf="@id/view_detail_btn"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="11dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="자세히 보러가기"
+                android:fontFamily="@font/pretendard_regular"
+                android:textSize="18dp"
+                android:textFontWeight="500"
+                android:textColor="#A5A5A5"
+        />
+
+        <View
+                android:id="@+id/rest_view"
+                app:layout_constraintTop_toBottomOf="@id/view_detail_btn"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="24dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

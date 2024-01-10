@@ -36,6 +36,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mapView: MapView
@@ -45,14 +46,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setDestKeyListener()
-
-        //val intent = Intent(this, RequestDetail::class.java)
-//        val intent = Intent(this, LoadingWhileFindingUserLocation::class.java)
-//        val intent = Intent(this, DarkMap::class.java)
-        val intent = Intent(this, ProceedStatus::class.java)
-
-        startActivity(intent)
-
 
         // 권한 체크
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)

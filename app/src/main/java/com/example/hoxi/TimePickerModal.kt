@@ -28,7 +28,7 @@ class TimePickerModal : AppCompatActivity() {
         alertDatepickerAmpm!!.displayedValues = arrayOf("AM", "PM")
 
         alertDatepickerHour!!.minValue = 0
-        alertDatepickerHour!!.maxValue = 23
+        alertDatepickerHour!!.maxValue = 11
 
         alertDatepickerMinute!!.minValue = 0
         alertDatepickerMinute!!.maxValue = 1

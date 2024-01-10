@@ -49,5 +49,8 @@ dependencies {
     implementation("com.sothree.slidinguppanel:library:3.4.0")
 
     // 사진
-    implementation ("androidx.activity:activity-ktx:1.3.0")
+    //implementation ("androidx.activity:activity-ktx:1.3.0")
+
+    // API 호출
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
 }

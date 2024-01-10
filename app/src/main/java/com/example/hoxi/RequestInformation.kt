@@ -19,6 +19,12 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import kotlin.math.min
 
 
 class RequestInformation : AppCompatActivity() {
@@ -245,7 +251,6 @@ class RequestInformation : AppCompatActivity() {
 
         paymentBtn.setOnClickListener{
             if (isDone()) {
-
                 val userName = findViewById<TextView>(R.id.user_name_text).text.toString()
                 val userPhone = findViewById<TextView>(R.id.user_phone_number_text).text.toString()
                 val accommodationContact = findViewById<TextView>(R.id.accommodation_contact_text).text.toString()
@@ -254,9 +259,9 @@ class RequestInformation : AppCompatActivity() {
                 val hours = findViewById<TextView>(R.id.desired_arrival_time_hours).text.toString()
                 val minutes = findViewById<TextView>(R.id.desired_arrival_time_minutes).text.toString()
                 val no = findViewById<TextView>(R.id.no_over_28_inch_luggage_text).textColors
-                val requestMessage = findViewById<TextView>(R.id.request_message)
-                val src = getIntent().getStringExtra("src")
-                val placeName = getIntent().getStringExtra("placeName")
+                val requestMessage = findViewById<TextView>(R.id.request_message)?.toString()
+                //val src = getIntent().getStringExtra("src").toString()
+                //val placeName = getIntent().getStringExtra("placeName").toString()
                 val charge = getLuggageCount(findViewById<TextView>(R.id.charge_text).text.toString())
 
                 val intent = Intent(this, Matching::class.java)
@@ -267,9 +272,31 @@ class RequestInformation : AppCompatActivity() {
                 intent.putExtra("accommodationContact", accommodationContact)
                 intent.putExtra("time", period +"," + hours + "," + minutes)
                 intent.putExtra("isThereOver28InchCarrier", isThereOver28InchCarrier(no))
+                //intent.putExtra("src", src)
+                //intent.putExtra("placeName", placeName)
+                    val request = createCallRequest(
+                        userId = 1,
+                        source = "부산역",
+                        destination = "광안리",
+                        distance = 10,
+                        arrivalTime = "${period},${hours},${minutes}",
+                        carrierNum = luggageCount,
+                        requirement = requestMessage,
+                        deliveryFee = 10000,
+                        isCargo = false,
+                        name = userName,
+                        phoneNumber = userPhone,
+                        hotelNumber = accommodationContact
+                    )
+                try {
+                    val client = OkHttpClient()
+                    val response = client.newCall(request).execute()
 
-                intent.putExtra("src", src)
-                intent.putExtra("placeName", placeName)
+                    println("에러다! " + response)
+                } catch (e : Exception){
+                    println("에러다! " + e.message)
+                }
+
 
                 startActivity(intent)
             }
@@ -291,6 +318,53 @@ class RequestInformation : AppCompatActivity() {
         val destView = findViewById<TextView>(R.id.dest_location)
         destView.setText(dest)
         destView.ellipsize = TextUtils.TruncateAt.END
+    }
+
+
+    fun createCallRequest(
+        userId: Int,
+        source: String,
+        destination: String,
+        distance: Int,
+        arrivalTime: String,
+        carrierNum: Int,
+        requirement: String?,
+        deliveryFee: Int,
+        isCargo: Boolean,
+        name: String,
+        phoneNumber: String,
+        hotelNumber: String
+    ): Request {
+        val url = "http://13.124.164.211/api/create/call"
+
+        val requestData = """
+        {
+            "user_id": $userId,
+            "call": {
+                "source": "$source",
+                "destination": "$destination",
+                "distance": $distance,
+                "arrivalTime": "$arrivalTime",
+                "carrierNum": $carrierNum,
+                "requirement": "$requirement",
+                "deliveryFee": $deliveryFee,
+                "isCargo": $isCargo
+            },
+            "reservation": {
+                "name": "$name",
+                "phoneNumber": "$phoneNumber",
+                "hotelNumber": "$hotelNumber"
+            }
+        }
+    """.trimIndent()
+
+        val mediaType = "application/json; charset=utf-8".toMediaType()
+        val requestBody: RequestBody = requestData.toRequestBody(mediaType)
+
+        return Request.Builder()
+            .url(url)
+            .post(requestBody)
+            .build()
     }
 
 }
