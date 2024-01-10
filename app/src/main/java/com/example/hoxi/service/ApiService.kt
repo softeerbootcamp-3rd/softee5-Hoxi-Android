@@ -13,6 +13,6 @@ interface ApiService {
     @POST("/api/create/call")
     fun makeCall(@Body callRequestDto : CallInfo) : Call<CallResponseDto>
 
-    @GET("/api/call/driver-position/3")
-    fun getDriverInfo(): Response<DriverInfoResponse>
+    @GET("/api/call/driver-position/5")
+    fun getDriverInfo(): Call<DriverInfoResponse>
 }
