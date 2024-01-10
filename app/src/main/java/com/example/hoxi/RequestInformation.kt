@@ -299,32 +299,8 @@ class RequestInformation : AppCompatActivity() {
                 intent.putExtra("accommodationContact", accommodationContact)
                 intent.putExtra("time", period +"," + hours + "," + minutes)
                 intent.putExtra("isThereOver28InchCarrier", isThereOver28InchCarrier(no))
-                //intent.putExtra("src", src)
-                //intent.putExtra("placeName", placeName)
-                    val request = createCallRequest(
-                        userId = 1,
-                        source = "부산역",
-                        destination = "광안리",
-                        distance = 10,
-                        arrivalTime = "${period},${hours},${minutes}",
-                        carrierNum = luggageCount,
-                        requirement = requestMessage,
-                        deliveryFee = 10000,
-                        isCargo = false,
-                        name = userName,
-                        phoneNumber = userPhone,
-                        hotelNumber = accommodationContact
-                    )
-                try {
-                    val client = OkHttpClient()
-                    val response = client.newCall(request).execute()
-
-                    println("에러다! " + response)
-                } catch (e : Exception){
-                    println("에러다! " + e.message)
-                }
-
-
+                intent.putExtra("src", src)
+                intent.putExtra("placeName", placeName)
                 startActivity(intent)
             }
         }
@@ -359,53 +335,5 @@ class RequestInformation : AppCompatActivity() {
         destView.setText(dest)
         destView.ellipsize = TextUtils.TruncateAt.END
     }
-
-
-    fun createCallRequest(
-        userId: Int,
-        source: String,
-        destination: String,
-        distance: Int,
-        arrivalTime: String,
-        carrierNum: Int,
-        requirement: String?,
-        deliveryFee: Int,
-        isCargo: Boolean,
-        name: String,
-        phoneNumber: String,
-        hotelNumber: String
-    ): Request {
-        val url = "http://13.124.164.211/api/create/call"
-
-        val requestData = """
-        {
-            "user_id": $userId,
-            "call": {
-                "source": "$source",
-                "destination": "$destination",
-                "distance": $distance,
-                "arrivalTime": "$arrivalTime",
-                "carrierNum": $carrierNum,
-                "requirement": "$requirement",
-                "deliveryFee": $deliveryFee,
-                "isCargo": $isCargo
-            },
-            "reservation": {
-                "name": "$name",
-                "phoneNumber": "$phoneNumber",
-                "hotelNumber": "$hotelNumber"
-            }
-        }
-    """.trimIndent()
-
-        val mediaType = "application/json; charset=utf-8".toMediaType()
-        val requestBody: RequestBody = requestData.toRequestBody(mediaType)
-
-        return Request.Builder()
-            .url(url)
-            .post(requestBody)
-            .build()
-    }
-
 }
 
